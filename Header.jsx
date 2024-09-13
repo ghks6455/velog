@@ -1,41 +1,45 @@
-export default function Header({ data, setData }) {
-  function col(e) {
-    if (e === 0) {
-      setData("trending");
-    } else if (e === 1) {
-      setData("latest");
-    } else if (e === 2) {
-      setData("feed");
-    }
-  }
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
+import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
+import { faClock } from "@fortawesome/free-solid-svg-icons";
+import style from "./Header.module.css";
+export default function Header({ data, setData, showCard, setShowCard }) {
   return (
     <>
       <header>
-        <div>velog</div>
-        <div className="btn">
+        <div className={style.top}>
+          <h1>velog</h1>
+          <button onClick={() => setShowCard((prev) => !prev)}>
+            {showCard ? "글작성" : "메인으로"}
+          </button>
+        </div>
+        <div className={style.btn}>
           <a href="#">
             <div
-              className={data === "trending" ? "active" : "none"}
-              onClick={() => col(0)}
+              className={
+                data === "trending" ? "_active_10o01_15" : "_none_10o01_1"
+              }
+              onClick={() => setData("trending")}
             >
-              트렌딩
+              <FontAwesomeIcon icon={faArrowTrendUp} /> 트렌딩
             </div>
           </a>
           <a href="#">
             <div
-              className={data === "latest" ? "active" : "none"}
-              onClick={() => col(1)}
+              className={
+                data === "latest" ? "_active_10o01_15" : "_none_10o01_1"
+              }
+              onClick={() => setData("latest")}
             >
-              최신
+              <FontAwesomeIcon icon={faClock} /> 최신
             </div>
           </a>
           <a href="#">
             <div
-              className={data === "feed" ? "active" : "none"}
-              onClick={() => col(2)}
+              className={data === "feed" ? "_active_10o01_15" : "_none_10o01_1"}
+              onClick={() => setData("feed")}
             >
-              피드
+              <FontAwesomeIcon icon={faRss} /> 피드
             </div>
           </a>
         </div>

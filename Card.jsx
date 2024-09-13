@@ -1,28 +1,32 @@
-import "../components/Card.css";
+import Styles from "./Card.module.css";
 
 export default function Card({ postData }) {
   return (
-    <div className="cardForm">
-      <div className="mainImg">
+    <div className={Styles.cardForm}>
+      <div className={Styles.mainImg}>
         <img src={postData.image} alt="img" />
       </div>
-      <div className="cardContent">
+      <div className={Styles.cardContent}>
         <h4>{postData.title}</h4>
-        <div className="content">
+        <div className={Styles.content}>
           <p>{postData.content}</p>
         </div>
 
-        <div className="under">
+        <div className={Styles.under}>
           {postData.createdAt} 댓글:{postData.comments}
         </div>
       </div>
-      <div className="foot">
-        <div className="name">
-          <img src={postData.userImage} alt="userImg" className="userImg" />
+      <div className={Styles.foot}>
+        <div className={Styles.name}>
+          <img
+            src={postData.userImage}
+            alt="userImg"
+            className={Styles.userImg}
+          />
           <p>by</p>
           <b>{postData.author}</b>
         </div>
-        <div className="like">{postData.likes}</div>
+        <div className={Styles.like}>{postData.likes}</div>
       </div>
     </div>
   );
